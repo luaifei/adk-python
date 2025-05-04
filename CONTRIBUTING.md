@@ -59,7 +59,7 @@ This project follows
 - All PRs, other than small documentation or typo fixes, should have a Issue assoicated. If not, please create one. 
 - Small, focused PRs. Keep changes minimal—one concern per PR.
 - For bug fixes or features, please provide logs or screenshot after the fix is applied to help reviewers better understand the fix.
-- Please add corresponding testing for your code change if it's not covered by existing tests.
+- Please include a `testing plan` section in your PR to talk about how you will test. This will save time for PR review. See `Testing Requirements` section for more details.
 
 ### Large or Complex Changes
 For substantial features or architectural revisions:
@@ -67,7 +67,43 @@ For substantial features or architectural revisions:
 - Open an Issue First: Outline your proposal, including design considerations and impact.
 - Gather Feedback: Discuss with maintainers and the community to ensure alignment and avoid duplicate work
 
-### Code reviews
+## Testing Requirements
+
+To maintain code quality and prevent regressions, all code changes must include comprehensive tests and verifiable end-to-end (E2E) evidence.
+
+
+### Unit Tests
+
+- **Coverage:** Cover new features, edge cases, error conditions, and typical use cases.  
+- **Location:** Add or update tests under `tests/unittests/`, following existing naming conventions (e.g., `test_<module>_<feature>.py`).  
+- **Framework:** Use `pytest`. Tests should be:  
+  - Fast and isolated.  
+  - Written clearly with descriptive names.  
+  - Free of external dependencies (use mocks or fixtures as needed).  
+- **Quality:** Aim for high readability and maintainability; include docstrings or comments for complex scenarios.
+
+### End-to-End (E2E) Tests
+
+E2E tests ensure integrated flows work as intended. Your tests should cover all scenarios. Sometimes, it's also good to ensure relevant functionality is not impacted.
+
+Depending on your change:
+
+- **ADK Web:**  
+  - Use the `adk web` to verify functionality.  
+  - Capture and attach relevant screenshots demonstrating the UI/UX changes or outputs.  
+  - Label screenshots clearly in your PR description.
+
+- **Runner:**
+  - Provide the testing setup. For example, the agent definition, and the runner setup.
+  - Execute the `runner` tool to reproduce workflows.  
+  - Include the command used and console output showing test results.  
+  - Highlight sections of the log that directly relate to your change.
+
+## Documentation
+
+For any changes that impact user-facing documentation (guides, API reference, tutorials), please open a PR in the [adk-docs](https://github.com/google/adk-docs) repository to update relevant part before or alongside your code PR.
+
+## Code reviews
 
 All submissions, including submissions by project members, require review. We
 use GitHub pull requests for this purpose. Consult
