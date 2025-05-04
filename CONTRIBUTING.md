@@ -68,6 +68,10 @@ To maintain code quality and prevent regressions, all code changes must include 
 
 #### Unit Tests
 
+Please add or update unit tests for your change. Please include a summary of passed `pytest` results.
+
+Requirements for unit tests:
+
 - **Coverage:** Cover new features, edge cases, error conditions, and typical use cases.  
 - **Location:** Add or update tests under `tests/unittests/`, following existing naming conventions (e.g., `test_<module>_<feature>.py`).  
 - **Framework:** Use `pytest`. Tests should be:  
